@@ -117,8 +117,10 @@ public class TechJobs {
                     "\n name: " + someJobs.get(i).get("name") +
                     "\n employer: " + someJobs.get(i).get("employer") +
                     "\n location: " + someJobs.get(i).get("location") +
-                    "\n core competency: " + someJobs.get(i).get("core competency")
-                    +"\n*****");
+                    "\n core competency: " + someJobs.get(i).get("core competency"));
+            if(i == someJobs.size()-1) {
+                System.out.println("*****");
+            }
         }
     }
 }
