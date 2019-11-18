@@ -11,7 +11,7 @@ public class TechJobs {
 
     private static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -61,9 +61,10 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    System.out.println(JobData.findAll(searchTerm));//This needs to be fixed!!!!
+                    ArrayList<String> allResults = JobData.findAll(searchTerm);
+                    System.out.println(allResults);//This needs to be checked!!!! It should return all results with this searchTerm
                 } else {
-                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
+                    printJobs(JobData.findByColumnAndValue(searchField, searchTerm));//keep this code, it was given to me
                 }
             }
         }
@@ -103,23 +104,27 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-        for (Integer i = 0; i < someJobs.size(); i++) {
-            System.out.println(
-                    "*****" +
-                    "\n position type: " + someJobs.get(i).get("position type") +
-                    "\n name: " + someJobs.get(i).get("name") +
-                    "\n employer: " + someJobs.get(i).get("employer") +
-                    "\n location: " + someJobs.get(i).get("location") +
-                    "\n core competency: " + someJobs.get(i).get("core competency"));
-            if(i == someJobs.size()-1) {
-                System.out.println("*****");
+        if (someJobs.size() == 0) {
+            System.out.println("No results found");
+        } else {
+            for (Integer i = 0; i < someJobs.size(); i++) {
+                System.out.println(
+                        "*****" +
+                                "\n position type: " + someJobs.get(i).get("position type") +
+                                "\n name: " + someJobs.get(i).get("name") +
+                                "\n employer: " + someJobs.get(i).get("employer") +
+                                "\n location: " + someJobs.get(i).get("location") +
+                                "\n core competency: " + someJobs.get(i).get("core competency"));
+                if (i == someJobs.size() - 1) {
+                    System.out.println("*****");
+                }
             }
         }
     }

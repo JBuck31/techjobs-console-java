@@ -18,8 +18,17 @@ public class JobData {
 
     private static final String DATA_FILE = "resources/job_data.csv";
     private static Boolean isDataLoaded = false;
-
     private static ArrayList<HashMap<String, String>> allJobs;
+    //set up AllJobs to be accessed outside this file
+    public static ArrayList<HashMap<String, String>> getAllJobs() {
+        return allJobs;
+    }
+
+    public static void setAllJobs(ArrayList<HashMap<String, String>> allJobs) {
+        JobData.allJobs = allJobs;
+    }
+
+
 
     /**
      * Fetch list of all values from loaded data,
