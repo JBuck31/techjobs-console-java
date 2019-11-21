@@ -72,12 +72,13 @@ public class JobData {
         //write code here to add to the ArrayList
         for (HashMap<String, String> row : allJobs) {
             for (String key: row.keySet()) {
-                boolean hasValue = row.containsValue(field);
-                if (hasValue) {
-                    if (!valuesArrayList.contains(row)) {
-                        valuesArrayList.add(row);
+                for (String value: row.values()){
+                    String myValue = row.get(key);
+                    if (myValue.toLowerCase().contains(field.toLowerCase())) {
+                        if (!valuesArrayList.contains(row)) {
+                            valuesArrayList.add(row);
+                        }
                     }
-
                 }
             }
 

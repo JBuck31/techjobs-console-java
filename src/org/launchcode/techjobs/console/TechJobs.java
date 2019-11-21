@@ -61,8 +61,10 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    ArrayList<String> allResults = JobData.findAll(searchTerm);
-                    System.out.println(allResults);//This needs to be checked!!!! It should return all results with this searchTerm
+
+                    ;//This needs to be FIXED!!! This might be where findByValue goes?
+                    printJobs(JobData.findByValue(searchTerm));
+
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));//keep this code, it was given to me
                 }
